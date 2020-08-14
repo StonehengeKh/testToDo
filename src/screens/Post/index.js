@@ -10,12 +10,17 @@ import {getComments} from "../../redux/actions/comments";
 function Post({ posts, getPosts, comments, getComments}) {
 
     const { id } = useParams();
+
+    console.log('post')
+
     const post = posts.find((el) => el.id === +id)
 
     useEffect(() => {
-        if (posts.length === 0) getPosts();
+        if (posts.length === 0) {
+            getPosts();
+        }
         getComments(id);
-    }, );
+    }, []);                                                                                                         // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
@@ -25,9 +30,9 @@ function Post({ posts, getPosts, comments, getComments}) {
             <h5>{post && post.title}</h5>
             <span>{post && post.body}</span>
         </div>
-        {comments && comments.map(
+        {comments.map(
             ({ id, name, body, email}) => (
-                <div className='commentBlock' key={id}>
+                <div className='commentWrapper' key={id}>
                     <h5>{name}</h5>
                     <span>{body}</span>
                     <h6>{email}</h6>

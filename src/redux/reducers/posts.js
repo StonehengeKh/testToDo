@@ -10,6 +10,7 @@ import {
 
 const initialState = {
     posts: [],
+    uniqueUserID: [],
     selectedUserId: [],
     search: '',
 }
@@ -18,9 +19,16 @@ export default (state = initialState, {type, payload}) => {
 
     switch (type) {
         case GET_POSTS_SUCCESS: {
+            const uniqueUserID = []
+            payload.forEach(item => {
+                if (uniqueUserID.indexOf(item.userId) === -1) {
+                    uniqueUserID.push(item.userId);
+                }
+            })
             return {
                 ...state,
                 posts: payload,
+                uniqueUserID: uniqueUserID,
             }
         }
 
@@ -90,6 +98,7 @@ export default (state = initialState, {type, payload}) => {
                     posts: arrRandom
                 }
             }
+            break
         }
 
         case SEARCH_POST: {

@@ -17,7 +17,7 @@ import {
 
 const debounce = (func, wait) => {
     let timeout;
-    return function(...args) {
+    return (...args) => {
         const later = () => {
             clearTimeout(timeout);
             func(...args);
@@ -27,34 +27,42 @@ const debounce = (func, wait) => {
     };
 };
 
-function HomePage({searchPost, search, getPosts, posts, createPost, deletePost, editPost, uniqueId, updateUniqueId, sortForId}) {
+function HomePage({
+                      uniqueUserID,
+                      searchPost,
+                      search,
+                      getPosts,
+                      posts,
+                      createPost,
+                      deletePost,
+                      editPost,
+                      uniqueSelectedUserId,
+                      updateUniqueId,
+                      sortForId,
+}) {
 
     useEffect(() => {
-        if (posts.length === 0)getPosts();
-    }, );
-
-    const arrayUniqueUserID = []
-    function itemCheck(item) {
-        if (arrayUniqueUserID.indexOf(item.userId) === -1) {
-            arrayUniqueUserID.push(item.userId);
+        if (posts.length === 0) {
+            getPosts();
         }
-    }
-    posts.forEach(itemCheck)
+    }, []);                                                                                                                 // eslint-disable-line react-hooks/exhaustive-deps
 
-    const sendData = {}
-    const updateData = {}
+    console.log('render')
+
+    const newPostForSend = {}
+    const updatePostForSend = {}
 
     const onChangeTitle = (event) => {
-        sendData.title = (event.target.value)
+        newPostForSend.title = (event.target.value)
     }
     const onChangeBody = (event) => {
-        sendData.body = event.target.value
+        newPostForSend.body = event.target.value
     }
     const onChangeNewTitle = (event) => {
-        updateData.title = event.target.value
+        updatePostForSend.title = event.target.value
     }
     const onChangeNewBody = (event) => {
-        updateData.body = event.target.value
+        updatePostForSend.body = event.target.value
     }
     const onChangeSearch = (event) => {
         searchPost(event.target.value)
@@ -68,47 +76,71 @@ function HomePage({searchPost, search, getPosts, posts, createPost, deletePost, 
     }
 
     const createNewPost = () => {
-        sendData.userId = Math.ceil(Math.random() * 10)
-        if (sendData.hasOwnProperty('title') && sendData.title.length > 0 && sendData.hasOwnProperty('body') && sendData.body.length > 0) {
-            createPost(sendData);
+        newPostForSend.userId = Math.ceil(Math.random() * 10)
+        if (newPostForSend.hasOwnProperty('title')
+            && newPostForSend.title.length > 0
+            && newPostForSend.hasOwnProperty('body')
+            && newPostForSend.body.length > 0) {
+            createPost(newPostForSend);
         } else {
             alert('Fill information')
         }
     }
 
     const updatePost = (id, userId) => {
-        if (updateData.hasOwnProperty('title') && updateData.title.length > 0 && updateData.hasOwnProperty('body') && updateData.body.length > 0) {
-            editPost({...updateData, id: id, userId: userId});
+        if (updatePostForSend.hasOwnProperty('title')
+            && updatePostForSend.title.length > 0
+            && updatePostForSend.hasOwnProperty('body')
+            && updatePostForSend.body.length > 0) {
+            editPost({...updatePostForSend, id: id, userId: userId});
         } else {
             alert('Fill information')
         }
     }
 
-    const filterPosts = posts.filter(el => uniqueId.includes(el.userId))
-    const postsForView = (uniqueId.length > 0) ? filterPosts : posts
-    const searchPostView = postsForView.filter(el => el.title.startsWith(search))
-    const postForMap = (search !== '') ? searchPostView : postsForView
+    const filterPosts = posts.filter(el => uniqueSelectedUserId.includes(el.userId))
+    const postsFilterOrAllPosts = (uniqueSelectedUserId.length > 0) ? filterPosts : posts
+    const searchPostForTitle = postsFilterOrAllPosts.filter(el => el.title.startsWith(search))
+    const postsForView = (search !== '') ? searchPostForTitle : postsFilterOrAllPosts
 
-    const fromBig = () => sortForId('fromBig')
-    const fromSmall = () => sortForId('fromSmall')
-    const random = () => sortForId('random')
+    const sortFromBigToSmallId = () => sortForId('fromBig')
+    const sortFromSmallToBigId = () => sortForId('fromSmall')
+    const sortRandomId = () => sortForId('random')
+
+    const createListUniqueIUserId = uniqueUserID.map((id) => (
+        <div key={id} className='headerFilterBar' onClick={() => updateUniqueId(id)}>
+            <Checkbox checked={uniqueSelectedUserId && uniqueSelectedUserId.includes(id)}/>
+            <span>User id: {id}</span>
+        </div>
+    ))
+
+    const createListPosts = postsForView.map(
+        ({ id, title, body, userId}) => (
+            <div className='toDoBlock' key={id}>
+                <span>user id: {userId}</span>
+                <span>id post: {id}</span>
+                <h5>{title}</h5>
+                <div>{body}</div>
+                <div className='toDoButtonBlock'>
+                    <div>
+                        <input type='text' placeholder='new title' name='newTitle' onChange={onChangeNewTitle}/>
+                        <input type='text' placeholder='new body' name='newBody' onChange={onChangeNewBody}/>
+                        <Button onClick={updatePost}>Edit</Button>
+                    </div>
+                    <Button onClick={() => deletePost(id)}>Delete</Button>
+                    <Link to={`/toDo${id}`}>Details</Link>
+                </div>
+            </div>
+        ))
+
 
     return (
     <div>
+        <div className='header'>{createListUniqueIUserId}</div>
         <div className='header'>
-            {arrayUniqueUserID.sort((a, b) => a - b).map(
-                (id) => (
-                    <div key={id} className='headerFilterBar' onClick={() => updateUniqueId(id)}>
-                        <Checkbox checked={uniqueId && uniqueId.includes(id)}/>
-                        <span>User id: {id}</span>
-                    </div>
-                ))
-            }
-        </div>
-        <div className='header'>
-            <Button onClick={fromBig}>From big ID</Button>
-            <Button onClick={fromSmall}>From small ID</Button>
-            <Button onClick={random}>Random</Button>
+            <Button onClick={sortFromBigToSmallId}>From big ID</Button>
+            <Button onClick={sortFromSmallToBigId}>From small ID</Button>
+            <Button onClick={sortRandomId}>Random</Button>
             <input type='text' placeholder='search' name='search for id post' onChange={sendSearchData}/>
         </div>
         <h3>List Posts</h3>
@@ -117,32 +149,15 @@ function HomePage({searchPost, search, getPosts, posts, createPost, deletePost, 
             <input type='text' placeholder='body' name='body' onChange={onChangeBody}/>
             <Button className='button' onClick={createNewPost}>New</Button>
         </div>
-        {posts && postForMap.map(
-            ({ id, title, body, userId}) => (
-                <div className='toDoBlock' key={id}>
-                    <span>user id: {userId}</span>
-                    <span>id post: {id}</span>
-                    <h5>{title}</h5>
-                    <div>{body}</div>
-                    <div className='toDoButtonBlock'>
-                        <div>
-                            <input type='text' placeholder='new title' name='newTitle' onChange={onChangeNewTitle}/>
-                            <input type='text' placeholder='new body' name='newBody' onChange={onChangeNewBody}/>
-                            <Button onClick={updatePost}>Edit</Button>
-                        </div>
-                        <Button onClick={() => deletePost(id)}>Delete</Button>
-                        <Link to={`/toDo${id}`}>Details</Link>
-                    </div>
-                </div>
-            ))
-        }
+        {createListPosts}
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
     posts: state.postsReducer.posts,
-    uniqueId: state.postsReducer.selectedUserId,
+    uniqueUserID: state.postsReducer.uniqueUserID,
+    uniqueSelectedUserId: state.postsReducer.selectedUserId,
     search: state.postsReducer.search,
 })
 

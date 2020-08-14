@@ -1,0 +1,29 @@
+.headerFilterBar {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.toDoBlock {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    margin: 20px 0;
+}
+
+.toDoButtonBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.formAddMessage {
+    display: flex;
+    justify-content: space-around;
+}

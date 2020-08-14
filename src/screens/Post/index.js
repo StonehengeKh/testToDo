@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
+import {connect} from "react-redux";
 
 import './style.css';
-import {connect} from "react-redux";
 import {getPosts} from "../../redux/actions/posts";
 import {getComments} from "../../redux/actions/comments";
 
@@ -10,17 +10,12 @@ import {getComments} from "../../redux/actions/comments";
 function Post({ posts, getPosts, comments, getComments}) {
 
     const { id } = useParams();
-
     const post = posts.find((el) => el.id === +id)
-
-    // console.log('posts', posts)
 
     useEffect(() => {
         if (posts.length === 0) getPosts();
         getComments(id);
-    }, []);
-
-
+    }, );
 
   return (
     <div>

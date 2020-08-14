@@ -15,7 +15,6 @@ import {
     searchPost
 } from "../../redux/actions/posts";
 
-
 const debounce = (func, wait) => {
     let timeout;
     return function(...args) {
@@ -32,7 +31,7 @@ function HomePage({searchPost, search, getPosts, posts, createPost, deletePost, 
 
     useEffect(() => {
         if (posts.length === 0)getPosts();
-    }, []);
+    }, );
 
     const arrayUniqueUserID = []
     function itemCheck(item) {
@@ -46,7 +45,6 @@ function HomePage({searchPost, search, getPosts, posts, createPost, deletePost, 
     const updateData = {}
 
     const onChangeTitle = (event) => {
-        // console.log('title====>', event.target.value.length > 0)
         sendData.title = (event.target.value)
     }
     const onChangeBody = (event) => {

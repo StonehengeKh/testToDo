@@ -11,7 +11,7 @@ import {
 const initialState = {
     posts: [],
     selectedUserId: [],
-    search: ''
+    search: '',
 }
 
 export default (state = initialState, {type, payload}) => {
@@ -83,12 +83,8 @@ export default (state = initialState, {type, payload}) => {
                 }
             }
             if (payload === 'random') {
-
                 const arrRandom = state.posts.slice()
                 arrRandom.sort(() => 0.5 - Math.random())
-                // const arrRandom = state.posts.map((a) => ({sort: Math.random(), value: a}))
-                //     .sort((a, b) => a.sort - b.sort)
-                //     .map((a) => a.value)
                 return {
                     ...state,
                     posts: arrRandom
@@ -100,7 +96,7 @@ export default (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 search: payload,
-            }
+            };
         }
 
         default:

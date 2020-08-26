@@ -1,0 +1,22 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleScreen {
+    font-size: 1.8vw;
+    text-transform: uppercase;
+}
+
+.backButton {
+    font-size: 1.4vw;
+    color: grey;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.backButton:hover {
+    color: black;
+}

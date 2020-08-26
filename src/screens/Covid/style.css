@@ -1,0 +1,44 @@
+.covidContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.globalInformationCovid {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleGlobalInformation {
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+
+.countriesCovidContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.countryCovidContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.wrapperSmallContainerInCountries {
+    display: flex;
+    justify-content: space-around;
+}
+
+.smallContainerInCountryInformation {
+    display: flex;
+    flex-direction: column;
+}
+
+.countryName {
+    font-weight: bold;
+    text-align: center;
+}

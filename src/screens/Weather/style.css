@@ -1,0 +1,38 @@
+.weatherContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerButtonCities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.errorMessage {
+    color: red;
+    border: 1px solid red;
+    margin: 20px 10px;
+    padding: 10px;
+}
+
+.containerWeatherCity {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.titleCityWeather {
+    font-size: 1.4vw;
+    font-weight: bold;
+}
+
+.cityButton {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: lightgrey;
+}

@@ -6,13 +6,9 @@ import './style.css';
 import {getPosts} from "../../redux/actions/posts";
 import {getComments} from "../../redux/actions/comments";
 
-
 function Post({ posts, getPosts, comments, getComments}) {
 
     const { id } = useParams();
-
-    console.log('post')
-
     const post = posts.find((el) => el.id === +id)
 
     useEffect(() => {

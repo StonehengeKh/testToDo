@@ -1,5 +1,10 @@
 
 const API = 'https://jsonplaceholder.typicode.com/';
+const API_COVID = 'https://api.covid19api.com/';
+const API_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q='
+const API_BLOCKCHAIN_BTC = 'https://blockchain.info/ticker'
+const API_CURRENCIES = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
+const API_NEWS = 'http://newsapi.org/v2/top-headlines?country=ua&apiKey=628b0723c3e04260a5977868141a3ab4'
 
 export const getPosts = async () => {
     const response = await fetch(`${API}posts`)
@@ -44,4 +49,34 @@ export const deletePost = async (id) => {
     })
     const posts = await response.json()
     return posts
+}
+
+export const getSummaryCovid = async () => {
+    const response = await fetch(`${API_COVID}summary`)
+    const dataCovid = await response.json()
+    return dataCovid;
+}
+
+export const getWeather = async (city) => {
+    const response = await fetch(`${API_WEATHER}${city}&appid=c93dd3b0d866284eada1abec31cafbe4`)
+    const weather = await response.json()
+    return weather;
+}
+
+export const getCurrencyBTC = async () => {
+    const response = await fetch(`${API_BLOCKCHAIN_BTC}`)
+    const currencyBTC = await response.json()
+    return currencyBTC
+}
+
+export const getCurrenciesOfUkraine = async () => {
+    const response = await fetch(`${API_CURRENCIES}`)
+    const currenciesOfUkraine = await response.json()
+    return currenciesOfUkraine
+}
+
+export const getNews = async () => {
+    const response = await fetch(`${API_NEWS}`)
+    const news = await response.json()
+    return news
 }

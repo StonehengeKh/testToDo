@@ -1,0 +1,4 @@
+.dataList {
+    display: flex;
+    flex-direction: column;
+}

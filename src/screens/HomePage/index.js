@@ -14,8 +14,10 @@ import {
     sortForId,
     searchPost
 } from "../../redux/actions/posts";
+import {selectorPosts} from "../../redux/selectors/posts";
+import HeaderMenu from "../../components/HeaderMenu";
 
-const debounce = (func, wait) => {
+export const debounce = (func, wait) => {
     let timeout;
     return (...args) => {
         const later = () => {
@@ -46,8 +48,6 @@ function HomePage({
             getPosts();
         }
     }, []);                                                                                                                 // eslint-disable-line react-hooks/exhaustive-deps
-
-    console.log('render')
 
     const newPostForSend = {}
     const updatePostForSend = {}
@@ -128,34 +128,36 @@ function HomePage({
                         <Button onClick={updatePost}>Edit</Button>
                     </div>
                     <Button onClick={() => deletePost(id)}>Delete</Button>
-                    <Link to={`/toDo${id}`}>Details</Link>
+                    <Link to={`/toDo${id}`} className='detailsButton'>Details</Link>
                 </div>
             </div>
         ))
 
 
     return (
-    <div>
-        <div className='header'>{createListUniqueIUserId}</div>
-        <div className='header'>
-            <Button onClick={sortFromBigToSmallId}>From big ID</Button>
-            <Button onClick={sortFromSmallToBigId}>From small ID</Button>
-            <Button onClick={sortRandomId}>Random</Button>
-            <input type='text' placeholder='search' name='search for id post' onChange={sendSearchData}/>
-        </div>
-        <h3>List Posts</h3>
-        <div className='formAddMessage'>
-            <input type='text' placeholder='title' name='title' onChange={onChangeTitle}/>
-            <input type='text' placeholder='body' name='body' onChange={onChangeBody}/>
-            <Button className='button' onClick={createNewPost}>New</Button>
-        </div>
-        {createListPosts}
-    </div>
-  );
+        <>
+            <HeaderMenu/>
+            <div className='header'>{createListUniqueIUserId}</div>
+            <div className='header'>
+                <Button onClick={sortFromBigToSmallId}>From big ID</Button>
+                <Button onClick={sortFromSmallToBigId}>From small ID</Button>
+                <Button onClick={sortRandomId}>Random</Button>
+                <input type='text' placeholder='search' name='search for id post' onChange={sendSearchData}/>
+            </div>
+            <h3>List Posts</h3>
+            <div className='formAddMessage'>
+                <input type='text' placeholder='title' name='title' onChange={onChangeTitle}/>
+                <input type='text' placeholder='body' name='body' onChange={onChangeBody}/>
+                <Button className='button' onClick={createNewPost}>New</Button>
+            </div>
+            {createListPosts}
+        </>
+    );
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.postsReducer.posts,
+    // posts: state.postsReducer.posts,
+    posts: selectorPosts(state),
     uniqueUserID: state.postsReducer.uniqueUserID,
     uniqueSelectedUserId: state.postsReducer.selectedUserId,
     search: state.postsReducer.search,

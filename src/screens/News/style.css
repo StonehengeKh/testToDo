@@ -1,0 +1,31 @@
+.newsContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.imageNews {
+    width: 16%;
+}
+
+.textNewsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+
+.titleNews {
+    font-weight: bold;
+    font-size: 1.4vw;
+}
+
+.descriptionNews {
+    font-size: 1.2vw;
+    margin: 10px 0;
+}
+
+.authorNews {
+    font-size: 1vw;
+    font-weight: bold;
+}

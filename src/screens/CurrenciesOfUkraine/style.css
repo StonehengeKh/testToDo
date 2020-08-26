@@ -1,0 +1,20 @@
+.currencyName {
+    /*font-size: 1.4vw;*/
+    font-weight: bold;
+}
+
+.containerBasisCurrencies {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.currencyExchangeContainer {
+    display: flex;
+    align-items: center;
+}
+
+.exchangeField {
+    padding: 5px;
+    margin: 0 15px;
+}

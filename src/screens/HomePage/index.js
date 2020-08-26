@@ -122,16 +122,16 @@ function HomePage({
     const createListPosts = postsForView.map(
         ({ id, title, body, userId}) => (
             <div className='toDoBlock' key={id}>
-                <span>user id: {userId}</span>
-                <span>id post: {id}</span>
+                <span>User: {userId}</span>
+                <span>Id post: {id}</span>
                 <h5>{title}</h5>
                 <div>{body}</div>
                 <div className='toDoButtonBlock'>
-                    <div>
+                    <>
                         <input type='text' placeholder='new title' name='newTitle' onChange={onChangeNewTitle}/>
                         <input type='text' placeholder='new body' name='newBody' onChange={onChangeNewBody}/>
                         <Button onClick={updatePost}>Edit</Button>
-                    </div>
+                    </>
                     <Button onClick={() => deletePost(id)}>Delete</Button>
                     <Link to={`/toDo${id}`} className='detailsButton'>Details</Link>
                 </div>

@@ -5,6 +5,7 @@ import {getCurrencyBTC} from "../../redux/actions/currencyBTC";
 import './style.css'
 import HeaderOfScreens from "../../components/HeaderOfScreens";
 import {debounce} from "../HomePage";
+import {selectCurrencyBTC} from "../../redux/selectors/currencyBTC";
 
 function Blockchain ({getCurrencyBTC, currencyBTC}) {
 
@@ -42,7 +43,7 @@ function Blockchain ({getCurrencyBTC, currencyBTC}) {
 }
 
 const mapStateToProps = (state) => ({
-    currencyBTC: state.currencyBTCReducer.currencyBTC
+    currencyBTC: selectCurrencyBTC(state)
 })
 
 const mapDispatchToProps = {

@@ -5,6 +5,7 @@ import './style.css'
 import {getWeather} from '../../redux/actions/weather'
 import {DATA_CITIES} from './DATA_CITIES'
 import HeaderOfScreens from "../../components/HeaderOfScreens";
+import {selectWeather} from "../../redux/selectors/weather";
 
 function Weather ({weather, getWeather}) {
 
@@ -32,7 +33,7 @@ function Weather ({weather, getWeather}) {
     )
 }
 const mapStateToProps = (state) => ({
-    weather: state.weatherReducer.weather,
+    weather: selectWeather(state),
 })
 
 const mapDispatchToProps = {

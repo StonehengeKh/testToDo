@@ -14,7 +14,12 @@ import {
     sortForId,
     searchPost
 } from "../../redux/actions/posts";
-import {selectorPosts} from "../../redux/selectors/posts";
+import {
+    selectPosts,
+    selectSearch,
+    selectSelectedUserId,
+    selectUniqueUserID
+} from "../../redux/selectors/posts";
 import HeaderMenu from "../../components/HeaderMenu";
 
 export const debounce = (func, wait) => {
@@ -110,7 +115,7 @@ function HomePage({
     const createListUniqueIUserId = uniqueUserID.map((id) => (
         <div key={id} className='headerFilterBar' onClick={() => updateUniqueId(id)}>
             <Checkbox checked={uniqueSelectedUserId && uniqueSelectedUserId.includes(id)}/>
-            <span>User id: {id}</span>
+            <span>User: {id}</span>
         </div>
     ))
 
@@ -156,11 +161,10 @@ function HomePage({
 }
 
 const mapStateToProps = (state) => ({
-    // posts: state.postsReducer.posts,
-    posts: selectorPosts(state),
-    uniqueUserID: state.postsReducer.uniqueUserID,
-    uniqueSelectedUserId: state.postsReducer.selectedUserId,
-    search: state.postsReducer.search,
+    posts: selectPosts(state),
+    uniqueUserID: selectUniqueUserID(state),
+    uniqueSelectedUserId: selectSelectedUserId(state),
+    search: selectSearch(state),
 })
 
 const mapDispatchToProps = {

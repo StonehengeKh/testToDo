@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {getNews} from '../../redux/actions/news'
 import './style.css'
 import HeaderOfScreens from "../../components/HeaderOfScreens";
+import {selectNews} from "../../redux/selectors/news";
 
 function News ({news, getNews}) {
 
@@ -33,7 +34,7 @@ function News ({news, getNews}) {
 }
 
 const mapStateToProps = (state) => ({
-    news: state.newsReducer.news
+    news: selectNews(state)
 })
 
 const mapDispatchToProps = {

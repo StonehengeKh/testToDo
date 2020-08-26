@@ -5,6 +5,7 @@ import './style.css'
 import {getCurrenciesOfUkraine} from '../../redux/actions/currenciesOfUkraine'
 import {debounce} from "../HomePage";
 import HeaderOfScreens from "../../components/HeaderOfScreens";
+import {selectCurrenciesOfUkraine} from "../../redux/selectors/currenciesOfUkraine";
 
 function CurrenciesOfUkraine ({currenciesOfUkraine, getCurrenciesOfUkraine}) {
 
@@ -86,7 +87,7 @@ function CurrenciesOfUkraine ({currenciesOfUkraine, getCurrenciesOfUkraine}) {
 }
 
 const mapStateToProps = (state) => ({
-    currenciesOfUkraine: state.currenciesOfUkraineReducer.currenciesOfUkraine
+    currenciesOfUkraine: selectCurrenciesOfUkraine(state)
 })
 
 const mapDispatchToProps = {

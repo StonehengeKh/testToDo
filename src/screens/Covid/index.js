@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import './style.css'
 import {getSummaryCovid} from "../../redux/actions/summaryCovidInformation";
 import HeaderOfScreens from "../../components/HeaderOfScreens";
+import {selectSummaryCovidCountries, selectSummaryCovidGlobal} from "../../redux/selectors/summaryCovid";
 
 function Covid ({getSummaryCovid, summaryCovidGlobal, summaryCovidCountries}) {
 
@@ -47,8 +48,8 @@ function Covid ({getSummaryCovid, summaryCovidGlobal, summaryCovidCountries}) {
     )
 }
 const mapStateToProps = (state) => ({
-    summaryCovidGlobal: state.summaryCovidReducer.summaryCovidGlobal,
-    summaryCovidCountries: state.summaryCovidReducer.summaryCovidCountries,
+    summaryCovidGlobal: selectSummaryCovidGlobal(state),
+    summaryCovidCountries: selectSummaryCovidCountries(state),
 })
 
 const mapDispatchToProps = {

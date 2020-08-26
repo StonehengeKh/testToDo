@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import './style.css';
 import {getPosts} from "../../redux/actions/posts";
 import {getComments} from "../../redux/actions/comments";
+import {selectPosts} from "../../redux/selectors/posts";
+import {selectComments} from "../../redux/selectors/comments";
 
 function Post({ posts, getPosts, comments, getComments}) {
 
@@ -40,8 +42,8 @@ function Post({ posts, getPosts, comments, getComments}) {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.postsReducer.posts,
-    comments: state.commentsReducer.comments,
+    posts: selectPosts(state),
+    comments: selectComments(state),
 })
 
 const mapDispatchToProps = {

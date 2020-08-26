@@ -1,8 +1,21 @@
-// import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
-export const selectorPosts = (state) => state.postsReducer.posts
+const selectPostsReducer = (state) => state && state.postsReducer;
 
-// export const selectorNewArr = createSelector(
-//     selectorPosts,
-//     posts => posts
-// )
+const selectPosts = createSelector(selectPostsReducer, (reducer) => {
+    return reducer && reducer.posts;
+});
+
+const selectUniqueUserID = createSelector(selectPostsReducer, (reducer) => {
+    return reducer && reducer.uniqueUserID;
+});
+
+const selectSelectedUserId = createSelector(selectPostsReducer, (reducer) => {
+    return reducer && reducer.selectedUserId;
+});
+
+const selectSearch = createSelector(selectPostsReducer, (reducer) => {
+    return reducer && reducer.search;
+});
+
+export { selectPosts, selectUniqueUserID, selectSelectedUserId, selectSearch};

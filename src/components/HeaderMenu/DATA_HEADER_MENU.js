@@ -23,4 +23,8 @@ export const DATA_HEADER_MENU = [
             link: '/hooks',
             title: 'Hooks',
         },
+        {
+            link: '/random-dog',
+            title: 'Dogs VS Cats',
+        },
     ]

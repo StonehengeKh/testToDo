@@ -1,0 +1,18 @@
+.buttonContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imagesContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.animalImage {
+    width: 40%;
+    /*height: 40vw;*/
+    overflow: hidden;
+    margin-top: 20px;
+}

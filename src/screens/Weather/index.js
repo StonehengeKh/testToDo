@@ -8,7 +8,7 @@ import HeaderOfScreens from "../../components/HeaderOfScreens";
 import {selectWeather} from "../../redux/selectors/weather";
 
 function Weather ({weather, getWeather}) {
-
+    // console.log('weather', weather)
     return (
         <div className='weatherContainer'>
             <HeaderOfScreens title={'Weather in Ukraine'}/>
@@ -26,7 +26,7 @@ function Weather ({weather, getWeather}) {
             {weather && weather.cod === 200 && <div className='containerWeatherCity'>
                 <span className='titleCityWeather'>{weather.name}</span>
                 <span>Temperature: {Math.floor(weather.main.temp - 273.15)} ℃</span>
-                <span>Weather: {weather.weather[0].main}</span>
+                <span>Weather: {weather.weather[0].description}</span>
                 <span>Wind: {weather.wind.speed} m/s</span>
             </div>}
         </div>

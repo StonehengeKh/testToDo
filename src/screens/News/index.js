@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux';
 
 import {getNews} from '../../redux/actions/news'
@@ -10,9 +10,9 @@ function News ({news, getNews}) {
 
     const allNews = news.articles
 
-    useState(() => {
+    useEffect(() => {
         getNews()
-    }, [])
+    }, [])                                                                                                                  // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>

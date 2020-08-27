@@ -1,10 +1,11 @@
-
 const API = 'https://jsonplaceholder.typicode.com/';
 const API_COVID = 'https://api.covid19api.com/';
 const API_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q='
 const API_BLOCKCHAIN_BTC = 'https://blockchain.info/ticker'
 const API_CURRENCIES = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
 const API_NEWS = 'http://newsapi.org/v2/top-headlines?country=ua&apiKey=628b0723c3e04260a5977868141a3ab4'
+const API_DOGS = 'https://dog.ceo/api/breeds/image/random'
+const API_CATS = 'https://api.thecatapi.com/v1/images/search?size=full'
 
 export const getPosts = async () => {
     const response = await fetch(`${API}posts`)
@@ -79,4 +80,16 @@ export const getNews = async () => {
     const response = await fetch(`${API_NEWS}`)
     const news = await response.json()
     return news
+}
+
+export const getDog = async () => {
+    const response = await fetch(`${API_DOGS}`)
+    const dog = await response.json()
+    return dog
+}
+
+export const getCat = async () => {
+    const response = await fetch(`${API_CATS}`)
+    const cat = await response.json()
+    return cat
 }

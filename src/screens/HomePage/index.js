@@ -21,18 +21,7 @@ import {
     selectUniqueUserID
 } from "../../redux/selectors/posts";
 import HeaderMenu from "../../components/HeaderMenu";
-
-export const debounce = (func, wait) => {
-    let timeout;
-    return (...args) => {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-};
+import {debounce} from "../../helpers/debounce";
 
 function HomePage({
                       uniqueUserID,
@@ -137,7 +126,6 @@ function HomePage({
                 </div>
             </div>
         ))
-
 
     return (
         <>

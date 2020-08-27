@@ -7,6 +7,8 @@ import weatherReducer from './weather'
 import currencyBTCReducer from './currencyBTC'
 import currenciesOfUkraineReducer from './currenciesOfUkraine'
 import newsReducer from './news'
+import dogReducer from './dog'
+import catReducer from './cat'
 
 export default combineReducers({
     postsReducer,
@@ -16,4 +18,6 @@ export default combineReducers({
     currencyBTCReducer,
     currenciesOfUkraineReducer,
     newsReducer,
+    dogReducer,
+    catReducer,
 });

@@ -1,19 +1,18 @@
 import {
-    GET_WEATHER_SUCCESS,
+    GET_CAT_SUCCESS,
 } from '../actions/actionTypes'
 
 const initialState = {
-    weather: {}
-
+    cat: [],
 }
 
 export default (state = initialState, {type, payload}) => {
 
     switch (type) {
-        case GET_WEATHER_SUCCESS: {
+        case GET_CAT_SUCCESS: {
             return {
                 ...state,
-                weather: payload
+                cat: payload
             }
         }
 

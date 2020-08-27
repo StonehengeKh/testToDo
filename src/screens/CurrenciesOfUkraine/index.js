@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import './style.css'
 import {getCurrenciesOfUkraine} from '../../redux/actions/currenciesOfUkraine'
-import {debounce} from "../HomePage";
+import {debounce} from "../../helpers/debounce";
 import HeaderOfScreens from "../../components/HeaderOfScreens";
 import {selectCurrenciesOfUkraine} from "../../redux/selectors/currenciesOfUkraine";
 
@@ -36,7 +36,6 @@ function CurrenciesOfUkraine ({currenciesOfUkraine, getCurrenciesOfUkraine}) {
     }
     const resultUanForEur = (eurExchange * (eur && eur.rate)).toFixed(2)
 
-
     const [rubExchange, setRubExchange] = useState()
     const rubExchangeToUan = (event) => {
         setRubExchange(event.target.value)
@@ -48,28 +47,26 @@ function CurrenciesOfUkraine ({currenciesOfUkraine, getCurrenciesOfUkraine}) {
     }
     const resultUanForRub = (rubExchange * (rub && rub.rate)).toFixed(2)
 
-
     useEffect(() => {getCurrenciesOfUkraine()}, [])                                                     // eslint-disable-line react-hooks/exhaustive-deps
-    // console.log(currenciesOfUkraine)
 
     currenciesOfUkraine.sort((a, b) => b.rate - a.rate )
 
     return (
-        <div>
+        <>
             <HeaderOfScreens title={'Currencies Of Ukraine'}/>
             <div className='containerBasisCurrencies'>
                 <div className='currencyExchangeContainer'>
-                    <span>USD: {usd && usd.rate} грн</span>
+                    <span>USD: {usd && usd.rate.toFixed(2)} грн</span>
                     <input className='exchangeField' type='number' placeholder='USD' onChange={exchangeUanToUsd}/>
                     {usdExchange > 0 && <span>You need {resultUanForUsd} uan</span>}
                 </div>
                 <div className='currencyExchangeContainer'>
-                    <span>EUR: {eur && eur.rate} грн</span>
+                    <span>EUR: {eur && eur.rate.toFixed(2)} грн</span>
                     <input className='exchangeField' type='number' placeholder='EUR' onChange={exchangeUanToEur}/>
                     {eurExchange > 0 && <span>You need {resultUanForEur} uan</span>}
                 </div>
                 <div className='currencyExchangeContainer'>
-                    <span>RUB: {rub && rub.rate} грн</span>
+                    <span>RUB: {rub && rub.rate.toFixed(2)} грн</span>
                     <input className='exchangeField' type='number' placeholder='RUB' onChange={exchangeUanToRub}/>
                     {rubExchange > 0 && <span>You need {resultUanForRub} uan</span>}
                 </div>
@@ -78,11 +75,11 @@ function CurrenciesOfUkraine ({currenciesOfUkraine, getCurrenciesOfUkraine}) {
                 {currenciesOfUkraine.map(({rate, txt, cc}) => (
                     <div key={cc}>
                         <span className='currencyName'>{txt}: </span>
-                        <span>{rate} грн</span>
+                        <span>{rate.toFixed(2)} грн</span>
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     )
 }
 

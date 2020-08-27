@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {getCurrencyBTC} from "../../redux/actions/currencyBTC";
 import './style.css'
 import HeaderOfScreens from "../../components/HeaderOfScreens";
-import {debounce} from "../HomePage";
+import {debounce} from "../../helpers/debounce";
 import {selectCurrencyBTC} from "../../redux/selectors/currencyBTC";
 
 function Blockchain ({getCurrencyBTC, currencyBTC}) {
@@ -12,7 +12,7 @@ function Blockchain ({getCurrencyBTC, currencyBTC}) {
     const [sumExchangedBTC, setSumExchangedBTC] = useState()
 
     useEffect(() => {getCurrencyBTC()}, [])                                                                     // eslint-disable-line react-hooks/exhaustive-deps
-    console.log('currencyBTC', currencyBTC)
+    // console.log('currencyBTC', currencyBTC)
 
     const exchangeUSDToBTC = (event) => {
         setSumExchangedBTC(event.target.value)

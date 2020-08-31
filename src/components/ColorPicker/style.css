@@ -1,0 +1,41 @@
+.colorPickerContainer {
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding-bottom: 30px;
+}
+
+.colorPicker {
+    background-color: white;
+    border: 1px solid grey;
+    display: flex;
+    margin-top: 30px;
+}
+
+.colorValue{
+    width: 110px;
+    margin: 5px;
+    color: grey;
+    font-weight: bold;
+}
+
+.colorBoxesStyle {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.colorBox {
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+}
+
+.colorSelectButton {
+    font-size: 14px;
+    color: grey;
+}
+

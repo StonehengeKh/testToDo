@@ -1,0 +1,95 @@
+.dropContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 200px;
+    margin-top: 20px;
+    position: relative;
+    box-shadow: 0 15px 10px 4px grey;
+}
+
+.colorItem {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgrey;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.itemSelected {
+    background-color: deepskyblue;
+    color: white;
+}
+
+.rgbColors {
+    padding-top: 10px;
+}
+
+.rangeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.nameRange {
+    color: grey;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.rangeButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+}
+
+.triangle {
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom: 12px solid white;
+    top: -22px
+}
+
+.colorList {
+    right: 10px;
+}
+
+.colorRGB {
+    right: 50px;
+}
+
+.range{
+    -webkit-appearance: none;
+    border-radius:5px;
+    width:160px;
+    height:2px;
+    outline : none;
+}
+
+.redGradient {
+    background: linear-gradient(to right, #ff0000, #000000);
+}
+
+.greenGradient {
+    background: linear-gradient(to right, #00ff00, #000000);
+}
+
+.blueGradient {
+    background: linear-gradient(to right, #0000ff, #000000);
+}
+
+.range::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width:8px;
+    height:8px;
+    background: grey;
+    border-radius:18px;
+    cursor:pointer;
+    transition:.1s;
+}
+
+.range::-webkit-slider-thumb:hover, .range::-webkit-slider-thumb:active{
+    width:9px;
+    height:9px;
+}

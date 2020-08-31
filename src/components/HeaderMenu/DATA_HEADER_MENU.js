@@ -1,7 +1,7 @@
 export const DATA_HEADER_MENU = [
         {
             link: '/covid-19',
-            title: 'Covid information',
+            title: 'Covid-19',
         },
         {
             link: '/weather',
@@ -9,7 +9,7 @@ export const DATA_HEADER_MENU = [
         },
         {
             link: '/blockchain',
-            title: 'Blockchain BTC currency',
+            title: 'Blockchain BTC',
         },
         {
             link: '/currencies-ukraine',
@@ -27,4 +27,8 @@ export const DATA_HEADER_MENU = [
             link: '/random-dog',
             title: 'Dogs VS Cats',
         },
+        {
+            link: '/color-picker',
+            title: 'Color choice'
+        }
     ]

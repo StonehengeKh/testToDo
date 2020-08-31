@@ -10,6 +10,7 @@ import Blockchain from '../screens/Blockchain';
 import CurrenciesOfUkraine from '../screens/CurrenciesOfUkraine';
 import News from '../screens/News';
 import Dog from '../screens/DogVsCat';
+import ColorChoice from "../screens/ColorChoice";
 
 function RouterPosts() {
 
@@ -25,6 +26,7 @@ function RouterPosts() {
                 <Route exact path='/currencies-ukraine' component={CurrenciesOfUkraine}/>
                 <Route exact path='/news-ukraine' component={News}/>
                 <Route exact path='/random-dog' component={Dog}/>
+                <Route exact path='/color-picker' component={ColorChoice}/>
             </Switch>
         </Router>
 

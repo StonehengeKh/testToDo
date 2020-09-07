@@ -44,7 +44,7 @@ function ColorChoice () {
                     <span className='colorChangeInfo'>Click me, to change color box</span>
                     <ColorBox color={value}/>
                 </div>
-            {isOpenColorPicker && <ColorPicker value={value} colors={colors} onChange={onChange}/>}
+                {isOpenColorPicker && <ColorPicker value={value} colors={colors} onChange={onChange}/>}
             </div>
         </>
     )

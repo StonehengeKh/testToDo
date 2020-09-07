@@ -9,6 +9,7 @@ import currenciesOfUkraineReducer from './currenciesOfUkraine'
 import newsReducer from './news'
 import dogReducer from './dog'
 import catReducer from './cat'
+import ticketsReducer from './tickets'
 
 export default combineReducers({
     postsReducer,
@@ -20,4 +21,5 @@ export default combineReducers({
     newsReducer,
     dogReducer,
     catReducer,
+    ticketsReducer,
 });

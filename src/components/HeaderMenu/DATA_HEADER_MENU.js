@@ -24,11 +24,15 @@ export const DATA_HEADER_MENU = [
             title: 'Hooks',
         },
         {
-            link: '/random-dog',
+            link: '/random-dog-cat',
             title: 'Dogs VS Cats',
         },
         {
             link: '/color-picker',
             title: 'Color choice'
-        }
+        },
+        {
+            link: '/airplane-tickets',
+            title: 'Tickets'
+        },
     ]

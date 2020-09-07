@@ -1,0 +1,64 @@
+.ticketsContainer {
+    width: 100%;
+}
+
+.airplaneTicketsContainer {
+    display: flex;
+}
+
+.menuContainer {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.ticket {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.priceCompanyTicketInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fullInformationTicket {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.informationTicket {
+    display: flex;
+    flex-direction: column;
+}
+
+.bigContainer {
+    width: 40%;
+}
+
+.smallContainer {
+    width: 25%;
+}
+
+.buttonTicketContainer {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.activeBtn {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: 1px solid lightgrey;
+}
+
+.notActiveBtn {
+    color: grey;
+    padding: 10px;
+    border: 1px solid lightgrey;
+}

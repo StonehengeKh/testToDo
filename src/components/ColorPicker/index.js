@@ -58,7 +58,7 @@ function ColorPicker ({value, colors, onChange}) {
         setGreen(greenStateValue);
         setBlue(blueStateValue)
         onChange(color)
-    },  [color])
+    },  [color])                                                                                                    // eslint-disable-line react-hooks/exhaustive-deps
 
     const rgb = `rgb(${red}, ${green}, ${blue})`
     const rgbToHex = (r, g, b) => {

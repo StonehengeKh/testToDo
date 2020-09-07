@@ -6,6 +6,7 @@ const API_CURRENCIES = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exch
 const API_NEWS = 'http://newsapi.org/v2/top-headlines?country=ua&apiKey=628b0723c3e04260a5977868141a3ab4'
 const API_DOGS = 'https://dog.ceo/api/breeds/image/random'
 const API_CATS = 'https://api.thecatapi.com/v1/images/search?size=full'
+const API_AIRPLANES_TICKETS = 'https://front-test.beta.aviasales.ru/'
 
 export const getPosts = async () => {
     const response = await fetch(`${API}posts`)
@@ -92,4 +93,13 @@ export const getCat = async () => {
     const response = await fetch(`${API_CATS}`)
     const cat = await response.json()
     return cat
+}
+
+export const getTickets = async () => {
+    const responseSearchId = await fetch(`${API_AIRPLANES_TICKETS}search`)
+    const searchId = await responseSearchId.json()
+    console.log('searchId', searchId)
+    const response = await fetch(`${API_AIRPLANES_TICKETS}tickets?searchId=${searchId.searchId}`)
+    const tickets = await response.json()
+    return tickets
 }

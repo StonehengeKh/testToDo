@@ -8,7 +8,6 @@ import HeaderOfScreens from "../../components/HeaderOfScreens";
 import {selectWeather} from "../../redux/selectors/weather";
 
 function Weather ({weather, getWeather}) {
-    // console.log('weather', weather)
     return (
         <div className='weatherContainer'>
             <HeaderOfScreens title={'Weather in Ukraine'}/>

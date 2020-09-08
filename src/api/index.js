@@ -98,7 +98,6 @@ export const getCat = async () => {
 export const getTickets = async () => {
     const responseSearchId = await fetch(`${API_AIRPLANES_TICKETS}search`)
     const searchId = await responseSearchId.json()
-    console.log('searchId', searchId)
     const response = await fetch(`${API_AIRPLANES_TICKETS}tickets?searchId=${searchId.searchId}`)
     const tickets = await response.json()
     return tickets
